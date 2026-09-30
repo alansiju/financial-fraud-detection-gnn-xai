@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment / secrets
+.env
+.env.*
+
+# Large datasets
+*.zip
+*.csv
+
+# Large trained models / graph files
+*.pt
+*.pth
+*.pkl
+*.joblib
+
+# Local database
+*.db
+
+# Generated files
+outputs/
+backups/
+
+# Server generated data
+server/uploads/
+server/reports/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Build/cache
+*.log
+.pytest_cache/
+.mypy_cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

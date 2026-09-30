@@ -1,0 +1,56 @@
+# ==============================================================================
+# Financial Fraud Detection (FraudShield AI) - Requirements
+# Python 3.12.x  (verified on 3.12.10, Windows 11 x64)
+#
+# WINDOWS SMART APP CONTROL
+# -------------------------
+# If Smart App Control is enabled (Settings > Privacy & security > Windows
+# Smart App Control), it blocks unsigned native extension DLLs and imports
+# fail with:
+#     ImportError: DLL load failed ... An Application Control policy has
+#     blocked this file
+# The pinned pandas/scikit-learn/numpy versions below are widely deployed
+# enough to pass its reputation check. Newer releases (pandas 3.x,
+# scikit-learn 1.9.x) are blocked. Do not "fix" this by disabling Smart App
+# Control -- it cannot be re-enabled without reinstalling Windows.
+#
+# GPU: install torch first, from the CUDA index, or it silently falls back to
+# a CPU-only build:
+#     pip install torch --index-url https://download.pytorch.org/whl/cu126
+#
+# NOTE: NeighborLoader from torch-geometric needs pyg-lib or torch-sparse,
+# neither of which publishes a Windows wheel for torch 2.14. graph_sampler.py
+# in this repo replaces it, so no compiled extension is required.
+# ==============================================================================
+
+# --- Machine Learning & Graph Neural Networks ---
+torch==2.14.0
+torch-geometric==2.8.0.post1
+numpy==2.0.2
+pandas==2.2.3
+scikit-learn==1.5.2
+scipy==1.18.1
+networkx==3.6.1
+matplotlib==3.11.2
+seaborn==0.13.2
+joblib==1.6.0
+
+# --- Gradient-boosting baselines (baselines.py skipped these silently when
+#     they were absent, so the "ML vs GNN" comparison was LR and RF only) ---
+xgboost==3.4.1
+lightgbm==4.7.0
+
+# --- Backend API & Web Server ---
+fastapi==0.139.2
+uvicorn[standard]==0.51.0
+pydantic==2.13.4
+python-multipart==0.0.32
+sqlalchemy==2.0.51
+
+# --- Security & Authentication ---
+python-jose[cryptography]==3.5.0
+bcrypt==5.0.0
+
+# --- Reporting & Data Export ---
+openpyxl==3.1.5
+reportlab==4.2.5   # 5.0.0 does not exist on PyPI
